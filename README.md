@@ -40,11 +40,32 @@ python get_models.py
 
 ### エージェントを実行
 
+基本的な実行方法:
 ```bash
-python agent.py
+python agent.py "こんにちは"
 ```
 
-`agent.py` では、`BedrockModel` を使用して Claude モデルを初期化し、シンプルなエージェントを作成しています。
+#### オプション引数
+
+- `--model-id`: 使用するモデルIDを指定（デフォルト: `anthropic.claude-3-5-sonnet-20240620-v1:0`）
+- `--temperature`: モデルの温度パラメータを指定（デフォルト: `0.3`）
+- `--profile`: AWSプロファイル名を指定（デフォルト: `default`）
+- `--region`: AWSリージョン名を指定（デフォルト: `us-east-1`）
+
+#### 使用例
+
+```bash
+# カスタムプロンプトで実行
+python agent.py "今日の天気を教えて"
+
+# モデルと温度を指定して実行
+python agent.py "複雑な質問を..." --model-id "anthropic.claude-3-7-sonnet-20250219-v1:0" --temperature 0.7
+
+# カスタムAWSプロファイルとリージョンを指定
+python agent.py "こんにちは" --profile my-profile --region ap-northeast-1
+```
+
+`agent.py` では、`BedrockModel` を使用して Claude モデルを初期化し、シンプルなエージェントを作成しています。コマンドライン引数を使用して、モデルやAWSの設定を柔軟に変更できます。
 
 ## ライセンス
 
